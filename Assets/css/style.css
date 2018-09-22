@@ -1,0 +1,32 @@
+.jumbotron {
+    height: 100%;   
+    color: none;
+    background: none;
+    opacity: 1;
+    margin-top: 50px;
+    margin-left: 60%;
+    width: 55%;
+  }
+
+  body {
+    background-image: url(../images/PawPrints.jpg);
+    height: 100%;
+    background-position: center;
+    background-repeat: repeat;
+    background-size: cover;
+    font-size: 30px;
+    font-family: 'Wallpoet', cursive;
+  }
+
+  .btn-primary,.btn-FindDriver  {
+    background-color: red;
+    border-color: red;
+    color: white;
+  }
+
+  .btn-secondary,.btn-Adopt1 {
+    background-color: blue;
+    border-color: blue;
+    color: white;
+  }
+
