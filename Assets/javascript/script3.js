@@ -7,7 +7,7 @@ var apiKey = "61ff53cfec91aa376da0e0263a0c8c83";
 var dataString = "";
 
 // URL to call Petfinder
-var queryURL = "http://api.petfinder.com/pet.find?format=json&key=" + apiKey + "&location=08043&callback=?";
+var queryURL = "http://api.petfinder.com/pet.find?format=json&key=" + apiKey + "&callback=?";
 console.log(queryURL);
 
 // Array to contain petfinder results
@@ -111,6 +111,7 @@ function callPetfinder() {
     url: queryURL,
     method: "GET"
   }).done(function (response) {
+    console.log(response);
     petArray = response.petfinder.pets.pet;
     console.log(petArray);
     buildResponse();
@@ -124,9 +125,10 @@ function buildQueryURL() {
   console.log(queryURL);
 
   // Breed
-  var breed = localStorage.getItem("Breed");
-  if(breed) {
-    dataString = dataString + "&breed=" + breed;
+  var animal = localStorage.getItem("Animal");
+  if(animal) {
+    console.log(dataString);
+    dataString = dataString + "&animal=" + breed;
   }
 
   // Size
@@ -143,17 +145,19 @@ function buildQueryURL() {
 
   // Location
   var loc = localStorage.getItem("Location");
+  console.log(loc);
   if (loc) {
     dataString = dataString + "&location=" + loc;
   }
 
   var age = localStorage.getItem("Age");
   if (age) {
-    datastring = dataString + "&age=" + age;
+    dataString = dataString + "&age=" + age;
   }
   
-  // queryURL = queryURL + dataString;
-  // console.log(queryURL);
+  console.log(dataString);
+  queryURL = queryURL + dataString;
+  console.log(queryURL);
 }
 
 

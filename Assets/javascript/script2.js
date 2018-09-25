@@ -1,14 +1,14 @@
 // Javascript for A1AdoptInput
 // Variable Declaration
-var breed = "";
+var animal = "";
 var size = "";
 var sex = "";
 var loc = "";
 var age = "";
 
 function getFormData() {
-  breed = $("#Breed").val().trim();
-  console.log(breed);
+  animal = $("#animal").val().trim();
+  console.log(animal);
   size = $("#size").val().trim();
   console.log(size);
   sex = $("#sex").val().trim();
@@ -20,7 +20,7 @@ function getFormData() {
 }
 
 function storeData() {
-  localStorage.setItem("Breed", breed);
+  localStorage.setItem("Animal", animal);
   localStorage.setItem("Size", size);
   localStorage.setItem("Sex", sex);
   localStorage.setItem("Location", loc);
