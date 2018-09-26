@@ -10,6 +10,7 @@ var config = {
   storageBucket: "classwork-29b93.appspot.com",
   messagingSenderId: "667186043094"
 };
+
 firebase.initializeApp(config);
 
 // Create a variable to reference the database;
@@ -25,10 +26,6 @@ function getDriverInfo() {
   zipcode = $("#enterzipcode").val().trim();
   driverName = $("#enterdriversname").val().trim();
   driverPhone = $("#enterdriversphone").val().trim();
-
-  console.log(zipcode);
-  console.log(driverName);
-  console.log(driverPhone);
 }
 
 // Store form data in firebase
@@ -38,9 +35,9 @@ function storeDriverInfo() {
     name: driverName,
     phone: driverPhone
   });
-
 }
 
+// Reset form fields
 function resetDataEntry() {
   $("#enterzipcode").val("Enter your Zipcode");
   $("#enterdriversname").val("Enter your Name");
@@ -51,8 +48,6 @@ function resetDataEntry() {
 $("#add-driver-btn").on("click", function (event) {
   // Prevent the page from refreshing
   event.preventDefault();
-
-  console.log(event);
 
   getDriverInfo();
   storeDriverInfo();

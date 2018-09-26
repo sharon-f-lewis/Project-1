@@ -8,7 +8,6 @@ var dataString = "";
 
 // URL to call Petfinder
 var queryURL = "http://api.petfinder.com/pet.find?format=json&key=" + apiKey + "&callback=?";
-console.log(queryURL);
 
 // Array to contain petfinder results
 var petArray = [];
@@ -37,6 +36,9 @@ function buildTableHeader() {
   $(".petsHeader").append(head2);
 
   head2 = "<th scope='col'>Breed</th>";
+  $(".petsHeader").append(head2);
+
+  head2 = "<th scope='col'>Name</th>";
   $(".petsHeader").append(head2);
 
   head2 = "<th scope='col'>Size</th>";
@@ -70,7 +72,18 @@ function buildTableRow(e) {
   $("." + rowId).append(detail2);
 
   // Breed
-  detail2 = "<td>" + petArray[e].breeds.breed.$t + "</td>";
+  // If more than one breed, display mixed, otherwise display breed
+  if (Array.isArray(petArray[e].breeds.breed)) {
+    detail2 = "<td>Mixed</td>";
+  }
+  else {
+    detail2 = "<td>" + petArray[e].breeds.breed.$t + "</td>";
+  }
+
+  $("." + rowId).append(detail2);
+
+  // Name
+  detail2 = "<td>" + petArray[e].name.$t + "</td>";
   $("." + rowId).append(detail2);
 
   // Size
@@ -92,8 +105,6 @@ function buildTableRow(e) {
 
 // Function to build table with data returned
 function buildResponse() {
-  // Empty pet display class
-  // $(".AdoptResults1").empty();
   buildTable();
   buildTableHeader();
 
@@ -105,15 +116,12 @@ function buildResponse() {
 
 // Function to call Petfinder and get list of pets
 function callPetfinder() {
-  console.log(queryURL);
 
   $.getJSON({
     url: queryURL,
     method: "GET"
   }).done(function (response) {
-    console.log(response);
     petArray = response.petfinder.pets.pet;
-    console.log(petArray);
     buildResponse();
   });
 }
@@ -122,18 +130,16 @@ function callPetfinder() {
 function buildQueryURL() {
   // Clear string
   dataString = ""
-  console.log(queryURL);
 
   // Breed
   var animal = localStorage.getItem("Animal");
-  if(animal) {
-    console.log(dataString);
-    dataString = dataString + "&animal=" + breed;
+  if (animal) {
+    dataString = dataString + "&animal=" + animal;
   }
 
   // Size
   var size = localStorage.getItem("Size");
-  if(size) {
+  if (size) {
     dataString = dataString + "&size=" + size;
   }
 
@@ -145,7 +151,6 @@ function buildQueryURL() {
 
   // Location
   var loc = localStorage.getItem("Location");
-  console.log(loc);
   if (loc) {
     dataString = dataString + "&location=" + loc;
   }
@@ -154,12 +159,9 @@ function buildQueryURL() {
   if (age) {
     dataString = dataString + "&age=" + age;
   }
-  
-  console.log(dataString);
-  queryURL = queryURL + dataString;
-  console.log(queryURL);
-}
 
+  queryURL = queryURL + dataString;
+}
 
 // Process on page load
 $(document).ready(function () {
