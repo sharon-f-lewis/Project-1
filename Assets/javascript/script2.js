@@ -6,19 +6,16 @@ var sex = "";
 var loc = "";
 var age = "";
 
+// Get data from from
 function getFormData() {
   animal = $("#animal").val().trim();
-  console.log(animal);
   size = $("#size").val().trim();
-  console.log(size);
   sex = $("#sex").val().trim();
-  console.log(sex);
   loc = $("#location").val().trim();
-  console.log(location);
   age = $("#age").val().trim();
-  console.log(age);
 }
 
+// Store the data in local storage to pass to next window
 function storeData() {
   localStorage.setItem("Animal", animal);
   localStorage.setItem("Size", size);
@@ -26,12 +23,11 @@ function storeData() {
   localStorage.setItem("Location", loc);
   localStorage.setItem("Age", age);
 }
-// debugger;
+
 // Capture Pet Request Button
 $(".btn-Adopt1").on("click", function (event) {
   // Prevent the page from refreshing
   event.preventDefault();
-  console.log(event);
 
   // clear local storage
   localStorage.clear();
@@ -42,5 +38,6 @@ $(".btn-Adopt1").on("click", function (event) {
   // Store form data in local storage
   storeData();
 
+  // Change to results window
   window.location.assign("A2AdoptResults.1.html");
 })
