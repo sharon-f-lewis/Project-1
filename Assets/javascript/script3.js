@@ -12,10 +12,9 @@ var dataString = "";
 var mapString = "";
 
 // URL to call Petfinder
-var queryURL1 = "http://api.petfinder.com/pet.find?format=json&key=" + apiKey1 + "&callback=?";
+var queryURL1 = "https://api.petfinder.com/pet.find?format=json&key=" + apiKey1 + "&callback=?";
 
 // URL to call Mapbox
-// var queryURL2 = "https://api.mapbox.com/v5/" + mapString + ".json?access_token=" + mapboxgl.accessToken;
 var urlLoc = "";
 var queryURL2 = "https://api.mapbox.com/geocoding/v5/mapbox.places/urlLoc.json?access_token=" + mapboxgl.accessToken;
 console.log(queryURL2);
