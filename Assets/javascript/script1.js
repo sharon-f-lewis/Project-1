@@ -52,4 +52,5 @@ $("#add-driver-btn").on("click", function (event) {
   getDriverInfo();
   storeDriverInfo();
   resetDataEntry();
+  window.location.assign("Transportation2.html");
 })

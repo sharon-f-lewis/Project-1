@@ -205,3 +205,9 @@ $(document).ready(function () {
   callPetfinder();
   buildMap();
 })
+
+$(".btn-FindDriver").on("click", function () {
+  // Prevent the page from refreshing
+  event.preventDefault();
+  window.location.assign("A3DriverResults.html");
+})
